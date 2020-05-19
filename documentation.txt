@@ -1,0 +1,42 @@
+Assumptions:
+
+-each word can be maximum of 32 bits
+-we are not maintaining main memory therefore while loading of data user have to input value of the whole block
+-we are maintaining tag field (as a list) which works along with the cache memory(we are storing predefined values in the tag field and cache)
+-user may enter their own value or choose to use default values(which is asked at the very first step)
+-Here user acts like the CPU which provides the address while searching,user have to enter the address in binary in the given format as directed.
+-To load at an address in cache ,user have to give the address in binary format as directed in the message and the values of the whole block(as generally we copy whole block form the RAM to the cache)
+-After every step user will be asked if he/she wants to continue(user have to enter 1 if yes)(any other number if no)
+
+
+Detailed explanation of code:
+
+We make many functions which helps the code to run:
+Pow2c(): returns if the given value is of power 2 or not(it takes log 2 of the given value and check if it is integer or not)
+Size_of_word(): this function returns if the given value size is less than 32 bit or not
+Search_dm(): function to search the given address using direct mapping technique(how it is done can be seen in the comments itself)
+Load_cache_dm(): function to load data into the cache using direct mapping technique(comments are self explanatory)
+Search_am(): function to search the given address using associative mapping technique(can be seen in the comments itself)
+Load_cache_am(): function to load data into the cache using associative mapping technique(how it is done can be seen in the comments itself)
+Search_nam(): function to search the given address using n way associative mapping technique(comments are self explanatory)
+Load_cache_nam(): function to load data into the cache using n way associative mapping technique(can be seen in the comments itself)
+Then we initialize our variables(N for total size of main memory)(cl for cache line size)(b for block size)(s for total cache size)(nb for number of blocks in main memory)
+We then find the number of bits required to store the address of each of the variable(each starting with nb_ shows the variable stores number of bits)
+We print the options and ask user for the input.if user gives other input the program gets terminated with proper message
+We create cache with some predefined values(so that we can test our program from the very first command)
+As the user inputs the value it checks the value and goes to the corresponding block(stored in variable "o")
+In each block we first calculate the size of the tag field and the bits required to store it
+We create a tag field with some previous values
+We then ask the user if he/she wants to search for an address or load a block(1 for searching and 2 for loading)
+According the choice it asks for the input
+-if searching then only address is asked,if loading then both address and the data of the blocks need to be entered
+A statement will direct the user for the size of the bits in address
+After that relevant functions are called with the parameters and the task is completed
+Now if the user want to continue he/she may enter 1 and continue or any other number to terminate the program(stored in "wanttocont" variable)
+other small details of each of the steps(of how smaller task are done) are commented in the code itself(please go through it for further explanation)
+
+Error reporting:
+
+-user must input values as a power of 2,otherwise it will show an error message
+-while loading user cannot enter value greater than 32 bit word size 
+-if user select the options other than the given ones then proper message will be displayed
