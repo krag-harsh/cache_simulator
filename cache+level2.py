@@ -1,5 +1,5 @@
 #HARSH KUMAR AGARWAL
-#2019423
+#Tried to simulate searching of memory block in cache with level 2
 #a = ("{0:0%db}" % alen).format(a)       #converts to binary value(as a string of length alen)
 #int("stirng of zeros and one", 2)                             #converts from string binary to int decimal
 
